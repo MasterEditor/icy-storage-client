@@ -9,60 +9,25 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Toolkit.Mvvm;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace IcyStorageClient
 {
     public static class BootStrapper
     {
-        private static ILifetimeScope _rootScope;
-        private static ChromeViewModel _chromeViewModel;
-
-        public static IViewModel RootVisual
-        {
-            get
-            {
-                if (_rootScope is null) Start();
-
-                _chromeViewModel = _rootScope.Resolve<ChromeViewModel>();
-                return _chromeViewModel;
-            }
-        }
+        public static IServiceProvider Services { get; set; }
 
         public static void Start()
         {
-            if (_rootScope is not null) return;
+            if (Services != null) return;
 
-            var builder = new ContainerBuilder();
-            var assemblies = new[] { Assembly.GetExecutingAssembly() };
+            var services = new ServiceCollection();
 
-            builder.RegisterAssemblyTypes(assemblies)
-                .Where(t => typeof(IService).IsAssignableFrom(t))
-                .SingleInstance();
+            services.AddTransient<ChromeViewModel>();
+            services.AddTransient<MainViewModel>();
 
-            builder.RegisterAssemblyTypes(assemblies)
-                .Where(t => typeof(IViewModel).IsAssignableFrom(t) && !typeof(ITransientViewModel).IsAssignableFrom(t));
-
-            builder.RegisterAssemblyTypes(assemblies)
-                .Where(t => typeof(IViewModel).IsAssignableFrom(t))
-                .Where(t => typeof(ITransientViewModel).IsAssignableFrom(t))
-                .ExternallyOwned();
-
-            _rootScope = builder.Build();
-        }
-
-        public static void Stop()
-        {
-            _rootScope.Dispose();
-        }
-
-        public static T Resolve<T>()
-        {
-            return _rootScope.Resolve<T>(new Parameter[0]);
-        }
-
-        public static T Resolve<T>(Parameter[] parameters)
-        {
-            return _rootScope.Resolve<T>(parameters);
+            Services = services.BuildServiceProvider();
         }
     }
 }

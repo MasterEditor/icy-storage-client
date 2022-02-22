@@ -14,8 +14,6 @@
         hc:ThemeManager.RequestedTheme="Dark"
         ActiveGlowColor="#ffd895">
     <Grid>
-        
-        
         <ContentPresenter Content="{Binding Main, Mode=OneTime}" />
         <ContentPresenter Content="{Binding Overlay}" />
     </Grid>

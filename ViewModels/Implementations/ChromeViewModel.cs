@@ -4,16 +4,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Toolkit.Mvvm;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 
 namespace IcyStorageClient.ViewModels
 {
-    public class ChromeViewModel : BindablePropertyBase, IViewModel
+    public class ChromeViewModel : ObservableObject
     {
         private MainViewModel _main;
         public MainViewModel Main
         {
             get => _main;
-            set { Set(ref _main, value); }
+            set { SetProperty(ref _main, value); }
         }
 
 
@@ -21,7 +23,7 @@ namespace IcyStorageClient.ViewModels
         public OverlayViewModel Overlay
         {
             get => _overlay;
-            set { Set(ref _overlay, value); }
+            set { SetProperty(ref _overlay, value); }
         }
     }
 }

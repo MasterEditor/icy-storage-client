@@ -1,4 +1,5 @@
-﻿using IcyStorageClient.Views;
+﻿using IcyStorageClient.ViewModels;
+using IcyStorageClient.Views;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -6,6 +7,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace IcyStorageClient
 {
@@ -26,13 +28,7 @@ namespace IcyStorageClient
             BootStrapper.Start();
 
             var window = new MainWindow();
-            window.DataContext = BootStrapper.RootVisual;
-
-            window.Closed += (o, e) =>
-            {
-                BootStrapper.Stop();
-            };
-
+            window.DataContext = BootStrapper.Services.GetService<ChromeViewModel>();
             window.Show();
         }
     }
