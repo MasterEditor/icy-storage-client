@@ -7,9 +7,14 @@ using System.Threading.Tasks;
 
 namespace IcyStorageClient.ViewModels
 {
-    public class ChromeViewModel : BindablePropertyBase, IChromeViewModel
+    public class ChromeViewModel : BindablePropertyBase, IViewModel
     {
-        public IMainViewModel Main { get; }
+        private MainViewModel _main;
+        public MainViewModel Main
+        {
+            get => _main;
+            set { Set(ref _main, value); }
+        }
 
 
         private OverlayViewModel _overlay;

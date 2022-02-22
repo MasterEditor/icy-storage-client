@@ -1,12 +1,22 @@
-﻿<Window x:Class="IcyStorageClient.Views.MainWindow"
+﻿<hc:GlowWindow x:Class="IcyStorageClient.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:IcyStorageClient.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        xmlns:hc="https://handyorg.github.io/handycontrol"
+        WindowStartupLocation="CenterScreen"
+        Title="ICY STORAGE"
+        Height="450"       
+        Width="800"
+        InactiveGlowColor="#ffd895"
+        hc:ThemeManager.RequestedTheme="Dark"
+        ActiveGlowColor="#ffd895">
     <Grid>
         
+        
+        <ContentPresenter Content="{Binding Main, Mode=OneTime}" />
+        <ContentPresenter Content="{Binding Overlay}" />
     </Grid>
-</Window>
+</hc:GlowWindow>

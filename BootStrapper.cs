@@ -15,7 +15,7 @@ namespace IcyStorageClient
     public static class BootStrapper
     {
         private static ILifetimeScope _rootScope;
-        private static IChromeViewModel _chromeViewModel;
+        private static ChromeViewModel _chromeViewModel;
 
         public static IViewModel RootVisual
         {
@@ -23,7 +23,7 @@ namespace IcyStorageClient
             {
                 if (_rootScope is null) Start();
 
-                _chromeViewModel = _rootScope.Resolve<IChromeViewModel>();
+                _chromeViewModel = _rootScope.Resolve<ChromeViewModel>();
                 return _chromeViewModel;
             }
         }
@@ -37,17 +37,14 @@ namespace IcyStorageClient
 
             builder.RegisterAssemblyTypes(assemblies)
                 .Where(t => typeof(IService).IsAssignableFrom(t))
-                .SingleInstance()
-                .AsImplementedInterfaces();
+                .SingleInstance();
 
             builder.RegisterAssemblyTypes(assemblies)
-                .Where(t => typeof(IViewModel).IsAssignableFrom(t) && !typeof(ITransientViewModel).IsAssignableFrom(t))
-                .AsImplementedInterfaces();
+                .Where(t => typeof(IViewModel).IsAssignableFrom(t) && !typeof(ITransientViewModel).IsAssignableFrom(t));
 
             builder.RegisterAssemblyTypes(assemblies)
                 .Where(t => typeof(IViewModel).IsAssignableFrom(t))
                 .Where(t => typeof(ITransientViewModel).IsAssignableFrom(t))
-                .AsImplementedInterfaces()
                 .ExternallyOwned();
 
             _rootScope = builder.Build();
