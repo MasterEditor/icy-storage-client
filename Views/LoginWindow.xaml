@@ -1,0 +1,37 @@
+﻿<hc:Window
+    x:Class="IcyStorageClient.Views.LoginWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:local="clr-namespace:IcyStorageClient.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="ICY STORAGE"
+    Width="300"
+    Height="270"
+    hc:ThemeManager.RequestedTheme="Dark"
+    FontFamily="{StaticResource Roboto-Regular}"
+    ResizeMode="NoResize"
+    mc:Ignorable="d">
+    <Grid>
+        <StackPanel Margin="20,0,20,0">
+            <TextBlock
+                Margin="0,30,0,0"
+                HorizontalAlignment="Center"
+                FontFamily="{StaticResource Roboto-Bold}"
+                FontSize="30"
+                Text="ICY STORAGE" />
+            <hc:TextBox Margin="0,30,0,0" hc:InfoElement.Placeholder="Email" />
+            <hc:TextBox Margin="0,15,0,0" hc:InfoElement.Placeholder="Password" />
+            <Button
+                Margin="0,20,0,0"
+                HorizontalAlignment="Stretch"
+                BorderBrush="{StaticResource PrimaryBrush}"
+                Content="Log in"
+                Cursor="Hand" />
+
+        </StackPanel>
+
+
+    </Grid>
+</hc:Window>

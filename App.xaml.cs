@@ -27,8 +27,8 @@ namespace IcyStorageClient
             
             BootStrapper.Start();
 
-            var window = new MainWindow();
-            window.DataContext = BootStrapper.Services.GetService<ChromeViewModel>();
+            var window = new LoginWindow();
+            window.DataContext = BootStrapper.Services.GetService<LoginViewModel>();
             window.Show();
         }
     }

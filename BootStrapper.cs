@@ -24,8 +24,11 @@ namespace IcyStorageClient
 
             var services = new ServiceCollection();
 
+            services.AddSingleton<ILoginService, LoginService>();
+
             services.AddTransient<ChromeViewModel>();
             services.AddTransient<MainViewModel>();
+            services.AddTransient<LoginViewModel>();
 
             Services = services.BuildServiceProvider();
         }

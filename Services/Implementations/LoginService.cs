@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace IcyStorageClient.Services
 {
-    internal interface IService
+    public class LoginService : ILoginService
     {
+
     }
 }

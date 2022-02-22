@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <FontFamily x:Key="Roboto-Thin">pack://application:,,,/Resources/Fonts/#Roboto Thin</FontFamily>
+    <FontFamily x:Key="Roboto-Light">pack://application:,,,/Resources/Fonts/#Roboto Light</FontFamily>
+    <FontFamily x:Key="Roboto-Medium">pack://application:,,,/Resources/Fonts/#Roboto Medium</FontFamily>
+    <FontFamily x:Key="Roboto-Regular">pack://application:,,,/Resources/Fonts/#Roboto Regular</FontFamily>
+    <FontFamily x:Key="Roboto-Bold">pack://application:,,,/Resources/Fonts/#Roboto Bold</FontFamily>
+
+    <Style TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Setter Property="FontFamily" Value="{StaticResource Roboto-Regular}" />
+    </Style>
+</ResourceDictionary>
