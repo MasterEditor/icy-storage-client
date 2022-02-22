@@ -1,5 +1,4 @@
-﻿using IcyStorageClient.Views;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -14,26 +13,5 @@ namespace IcyStorageClient
     /// </summary>
     public partial class App : Application
     {
-        public App()
-        {
-
-        }
-
-        protected override void OnStartup(StartupEventArgs e)
-        {
-            base.OnStartup(e);
-            
-            BootStrapper.Start();
-
-            var window = new MainWindow();
-            window.DataContext = BootStrapper.RootVisual;
-
-            window.Closed += (o, e) =>
-            {
-                BootStrapper.Stop();
-            };
-
-            window.Show();
-        }
     }
 }
